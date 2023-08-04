@@ -1,5 +1,5 @@
 export { default as Me } from './me.png';
-export { default as FitnessUI } from './ftinessUi.png';
+export { default as FitnessUI } from './fitnessui.png';
 export { default as Eng } from './eng.png';
 export { default as Booking } from './booking.png';
 export { default as Netflix } from './netflix.png';
