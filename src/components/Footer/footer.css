@@ -1,0 +1,28 @@
+.footer {
+  border: 0;
+  padding-block: 2.5em;
+}
+
+.footer .text-box {
+  margin-inline: auto;
+}
+
+.footer .text-box .text {
+  font-family: var(--ff-sans-body);
+  font-size: calc(var(--fs-xs) - 0.125em);
+  font-weight: 500;
+  color: var(--neutral-800);
+  text-align: center;
+}
+
+.text-box .text .external-link {
+  color: var(--neutral-800);
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--ease-out-sine) var(--ms200);
+  position: relative;
+}
+
+.text-box .text .external-link:is(:hover, :focus-within) {
+  color: var(--primary-600);
+}
