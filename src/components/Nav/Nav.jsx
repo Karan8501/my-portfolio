@@ -58,7 +58,7 @@ const Nav = () => {
                 <li key={item.id}>
                   <a
                     target={`${index === navLinks.length - 1 ? '_blank' : '_self'}`}
-                    href={`${index === navLinks.length - 1 ? 'https://drive.google.com/file/d/1jqjvLT6kzje5hbMRLvJzV-dBMSDcfAuw/view?usp=drivesdk' : `#${item.id}`}`}
+                    href={`${index === navLinks.length - 1 ? 'https://drive.google.com/file/d/1j2IwD_Qktkplp-oX_LWTf0QFEFz6acnE/view?usp=drive_link' : `#${item.id}`}`}
                     className={` ${index === navLinks.length - 1 ? 'nav-links resume' : 'nav-links'}  `}
                   >
                     {item.title}
