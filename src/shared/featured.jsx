@@ -1,8 +1,9 @@
 
-import { FitnessUI, Booking, Eng, Netflix } from '../static/images';
+import { FitnessUI, Booking, Eng, Netflix, brownWave } from '../static/images';
 
 
 export const featured = [
+
   {
     id: 'hotel-Booking',
     name: 'Hotel Booking APP',
@@ -20,6 +21,7 @@ export const featured = [
     code: 'https://github.com/Karan8501/Fitness_club',
     live: 'https://fit-club-6ya.pages.dev/',
     image: FitnessUI,
+
   },
   {
     id: 'netflix',
@@ -55,6 +57,15 @@ export const featured = [
     stack: ['ReactJS', "FireBase"],
     code: 'https://github.com/Karan8501/real_chat_application',
   },
+  {
+    id: 'Chocalte Store',
+    name: 'Brown wave',
+    info: 'This is Chocalte web site buid with the multiple sliders and smooth u ',
+    stack: ['ReactJS', "FireBase"],
+    code: 'https://github.com/Karan8501/EveryDayTask-month-sept',
+
+  },
+
 
 ];
 
