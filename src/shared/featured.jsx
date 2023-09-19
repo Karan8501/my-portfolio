@@ -54,7 +54,7 @@ export const featured = [
     id: 'Chat application ',
     name: 'Real Time Chat appl',
     info: 'This is a real time chat application in which user can send the images to indviual its usees Firebase for the user authentiv=cation',
-    stack: ['ReactJS', "FireBase"],
+    stack: ['Html5', "CSS","Javascript"],
     code: 'https://github.com/Karan8501/real_chat_application',
   },
   {
