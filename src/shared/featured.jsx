@@ -60,8 +60,8 @@ export const featured = [
   {
     id: 'Chocalte Store',
     name: 'Brown wave',
-    info: 'This is Chocalte web site buid with the multiple sliders and smooth u ',
-    stack: ['ReactJS', "FireBase"],
+    info: 'This is Chocalte web site buid with the multiple sliders and smooth  Ui,
+    stack: ['HTML', "CSS","JAVASCRIPT"],
     code: 'https://github.com/Karan8501/EveryDayTask-month-sept',
 
   },
