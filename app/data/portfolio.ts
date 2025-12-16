@@ -12,6 +12,7 @@ export interface ProjectItem {
   description: string;
   stack: string[];
   link?: string;
+  images?: string[];
 }
 
 export interface SkillCategory {
@@ -83,15 +84,24 @@ export const portfolioData = {
   projects: [
     {
       title: "XpressBees Website",
-      description: "Official website for XpressBees with a custom CMS.",
-      stack: ["React", "CMS", "Frontend"],
+      description: "Official website for XpressBees with a custom CMS. Handles millions of visitors and tracks logistics in real-time.",
+      stack: ["React", "Next.js", "Tailwind CSS", "CMS"],
       link: "https://www.xpressbees.com",
+      images: [
+        "https://placehold.co/800x500/1a1a1a/ffffff?text=XpressBees+Home",
+        "https://placehold.co/800x500/1a1a1a/ffffff?text=Tracking+Dashboard",
+        "https://placehold.co/800x500/1a1a1a/ffffff?text=Mobile+View"
+      ]
     },
     {
       title: "OutMazed Website",
-      description: "Official OutMazed website with responsive design and full CMS.",
-      stack: ["React", "Responsive Design", "CMS"],
+      description: "Official OutMazed website featuring a high-performance responsive design and a fully integrated custom Content Management System.",
+      stack: ["React", "Responsive Design", "CMS", "Node.js"],
       link: "https://www.outmazed.com",
+      images: [
+        "https://placehold.co/800x500/1a1a1a/ffffff?text=OutMazed+Hero",
+        "https://placehold.co/800x500/1a1a1a/ffffff?text=Portfolio+Grid"
+      ]
     },
   ],
   skills: [

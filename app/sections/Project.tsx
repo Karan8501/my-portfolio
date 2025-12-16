@@ -1,35 +1,79 @@
-import { portfolioData } from "../data/portfolio";
-import Link from "next/link";
+import { portfolioData, ProjectItem } from "../data/portfolio";
+import { useState } from "react";
 import { SpotlightCard } from "../components/SpotlightCard";
+import { ProjectModal } from "../components/ProjectModal";
 
 export function Projects() {
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleProjectClick = (project: ProjectItem) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <section id="projects" className="py-16 px-6 bg-[var(--accents-1)]">
-      <div className="max-w-screen-xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-[var(--geist-foreground)]">Projects</h2>
+    <section id="projects" className="py-24 px-6 bg-[var(--accents-1)]">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold mb-12 text-[var(--geist-foreground)]">Featured Projects</h2>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {portfolioData.projects.map((project, index) => (
-            <SpotlightCard key={index} className="group p-6 bg-[var(--geist-background)]">
-              <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold text-[var(--geist-foreground)]">{project.title}</h3>
-                  {project.link && (
-                      <Link href={project.link} target="_blank" className="text-[var(--accents-5)] hover:text-[var(--geist-foreground)]">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                      </Link>
-                  )}
+            <SpotlightCard
+              key={index}
+              className="group !p-0 bg-[var(--geist-background)] cursor-pointer hover:border-[var(--geist-foreground)] transition-all overflow-hidden"
+              onClick={() => handleProjectClick(project)}
+            >
+              {/* Card Preview Image (First image from array or placeholder) */}
+              <div className="w-full h-48 bg-[var(--accents-2)] relative overflow-hidden">
+                {project.images && project.images.length > 0 ? (
+                  <img
+                    src={project.images[0]}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-[var(--accents-4)]">
+                    <span className="text-sm">No Preview</span>
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
               </div>
-              <p className="text-[var(--accents-5)] mb-6 h-auto min-h-[3rem]">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.stack.map((tech, i) => (
-                  <span key={i} className="text-xs font-mono text-[var(--accents-6)] bg-[var(--accents-1)] px-2 py-1 rounded">
-                    {tech}
-                  </span>
-                ))}
+
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="text-xl font-bold text-[var(--geist-foreground)] group-hover:text-[var(--geist-success)] transition-colors">{project.title}</h3>
+                </div>
+
+                <p className="text-[var(--accents-5)] text-sm mb-6 line-clamp-3">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {project.stack.slice(0, 4).map((tech, i) => (
+                    <span key={i} className="text-xs font-mono text-[var(--accents-6)] bg-[var(--accents-1)] px-2 py-1 rounded border border-[var(--accents-2)]">
+                      {tech}
+                    </span>
+                  ))}
+                  {project.stack.length > 4 && (
+                    <span className="text-xs font-mono text-[var(--accents-5)] px-1 py-1">
+                      +{project.stack.length - 4}
+                    </span>
+                  )}
+                </div>
               </div>
             </SpotlightCard>
           ))}
         </div>
       </div>
+
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </section>
   );
 }

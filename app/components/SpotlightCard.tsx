@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 
-export function SpotlightCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+export function SpotlightCard({ children, className = "", onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) {
   const divRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
@@ -40,13 +40,14 @@ export function SpotlightCard({ children, className = "" }: { children: React.Re
       onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={onClick}
       className={`relative overflow-hidden rounded-xl border border-[var(--accents-2)] bg-[var(--accents-1)]/50 px-8 py-10 shadow-sm ${className}`}
     >
       <div
         className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
         style={{
           opacity,
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.1), transparent 40%)`,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, var(--spotlight-color), transparent 40%)`,
         }}
       />
       <div className="inherit">{children}</div>

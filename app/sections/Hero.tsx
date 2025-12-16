@@ -11,7 +11,7 @@ export function Hero({ onContactClick }: HeroProps) {
   const nameChars = portfolioData.personal.name.split("");
 
   return (
-    <section className="relative flex flex-col items-center justify-center pt-32 pb-16 px-6 text-center lg:pt-48 lg:pb-32 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center min-h-screen pt-22 pb-16 px-6 text-center lg:pt-22 lg:pb-22 overflow-hidden">
       <GridBackground />
       <h1 className="mx-auto max-w-4xl text-5xl font-extrabold tracking-tight text-[var(--geist-foreground)] sm:text-7xl mb-6 pb-2 relative z-10 flex flex-wrap justify-center items-end gap-0 min-h-[200px]">
         <span className="bg-clip-text text-transparent bg-gradient-to-b from-[var(--geist-foreground)] to-[var(--accents-5)] mb-16 mr-4 self-center">
@@ -26,7 +26,6 @@ export function Hero({ onContactClick }: HeroProps) {
                 </BendingString>
             ))}
         </div>
-        <span className="bg-clip-text text-transparent bg-gradient-to-b from-[var(--geist-foreground)] to-[var(--accents-5)] mb-16 self-center">.</span>
       </h1>
       <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--accents-5)] sm:text-xl">
         {portfolioData.personal.summary}

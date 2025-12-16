@@ -143,6 +143,7 @@
   /* Map standard vars to new design system */
   --background: var(--geist-background);
   --foreground: var(--geist-foreground);
+  --spotlight-color: rgba(0, 0, 0, 0.04);
 }
 
 .dark {
@@ -217,6 +218,7 @@
   --geist-error-light: #f33;
   --geist-error: red;
   --geist-error-dark: #e60000;
+  --spotlight-color: rgba(255, 255, 255, 0.1);
 }
 
 html, body {

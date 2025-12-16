@@ -1,26 +1,34 @@
+"use client";
+
+import { useTheme } from "../providers/ThemeProvider";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { navbarConfig } from "./navbar.config";
 import { LanguageSelector } from "./LanguageSelector";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <header className="fixed top-0 z-50 w-full border-b border-[var(--accents-2)] bg-[var(--geist-background)]/80 backdrop-blur-md">
       <div className="flex h-16 items-center justify-between px-6 max-w-screen-xl mx-auto">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2" aria-label="Go to homepage">
-            <svg
-              aria-label="Vercel logomark"
-              height="22"
-              role="img"
-              viewBox="0 0 74 64"
-              className="w-auto"
-            >
-              <path
-                d="M37.5896 0.25L74.5396 64.25H0.639648L37.5896 0.25Z"
-                fill="var(--geist-foreground)"
+            {mounted ? (
+              <img
+                src={theme === 'dark' ? "/logo.png" : "/logo-light.png"}
+                alt="Karan Chauhan Logo"
+                className="h-10 w-auto object-contain"
               />
-            </svg>
+            ) : (
+              <div className="h-10 w-10 bg-transparent" /> // Placeholder to prevent CLS
+            )}
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">

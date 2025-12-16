@@ -1,36 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useTheme } from "../providers/ThemeProvider";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    // Check initial preference
-    if (
-        localStorage.getItem("theme") === "dark" ||
-        (!("theme" in localStorage) &&
-         window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-        setTheme("dark");
-        document.documentElement.classList.add("dark");
-    } else {
-        setTheme("light");
-        document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      setTheme("dark");
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <button
@@ -39,7 +12,7 @@ export function ThemeToggle() {
       aria-label="Toggle Dark Mode"
     >
       {theme === "dark" ? (
-        // Sun Icon
+        // Sun Icon (keep existing SVG)
         <svg
           width="20"
           height="20"
@@ -61,7 +34,7 @@ export function ThemeToggle() {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
         </svg>
       ) : (
-        // Moon Icon
+          // Moon Icon (keep existing SVG)
         <svg
           width="20"
           height="20"

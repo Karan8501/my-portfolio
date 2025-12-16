@@ -5,8 +5,7 @@ import { Hero } from "./sections/Hero";
 import { Experience } from "./sections/Experience";
 import { Skills } from "./sections/Skills";
 import { Projects } from "./sections/Project";
-import { Education } from "./sections/Education";
-import { About } from "./sections/About";
+import { Footer } from "./components/Footer";
 import { ContactModal } from "./components/ContactModal";
 
 export default function Home() {
@@ -18,8 +17,7 @@ export default function Home() {
       <Experience />
       <Skills />
       <Projects />
-      <Education />
-      <About />
+      <Footer />
       
       <ContactModal 
         isOpen={isContactOpen} 
