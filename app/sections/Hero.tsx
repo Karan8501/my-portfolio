@@ -11,9 +11,9 @@ export function Hero({ onContactClick }: HeroProps) {
   const nameChars = portfolioData.personal.name.split("");
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen pt-22 pb-16 px-6 text-center lg:pt-22 lg:pb-22 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center h-screen px-6 text-center overflow-hidden">
       <GridBackground />
-      <h1 className="mx-auto max-w-4xl text-5xl font-extrabold tracking-tight text-[var(--geist-foreground)] sm:text-7xl mb-6 pb-2 relative z-10 flex flex-wrap justify-center items-end gap-0 min-h-[200px]">
+      <h1 className="mx-auto max-w-4xl text-5xl font-extrabold tracking-tight text-[var(--geist-foreground)] sm:text-7xl mb-4 pb-2 relative z-10 flex flex-wrap justify-center items-end gap-0 min-h-[180px]">
         <span className="bg-clip-text text-transparent bg-gradient-to-b from-[var(--geist-foreground)] to-[var(--accents-5)] mb-16 mr-4 self-center">
           Hi, I'm
         </span>
