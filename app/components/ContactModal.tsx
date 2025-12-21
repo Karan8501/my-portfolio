@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "./Button";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -35,26 +36,47 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" 
+        className="absolute inset-0 bg-black/90 backdrop-blur-sm transition-opacity" 
         onClick={onClose}
       />
       
       {/* Modal Content */}
-      <div className="relative w-full max-w-lg bg-[var(--geist-background)] border border-[var(--accents-2)] rounded-lg shadow-2xl p-8 animate-in fade-in zoom-in duration-200">
+      <div
+        className="relative w-full max-w-lg rounded-lg shadow-2xl p-8 border-2"
+        style={{
+          backgroundColor: 'var(--surface-primary)',
+          borderColor: 'var(--border-primary)'
+        }}
+      >
+        {/* Close button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-[var(--accents-5)] hover:text-[var(--geist-foreground)]"
+          className="absolute top-4 right-4 p-2 rounded-full transition-all"
+          style={{ color: 'var(--text-secondary)' }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = 'var(--text-primary)';
+            e.currentTarget.style.backgroundColor = 'var(--surface-secondary)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = 'var(--text-secondary)';
+            e.currentTarget.style.backgroundColor = 'transparent';
+          }}
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
-        <h2 className="text-2xl font-bold mb-6 text-[var(--geist-foreground)]">Contact Me</h2>
+        <h2
+          className="text-3xl font-black mb-6 tracking-tight"
+          style={{ color: 'var(--text-primary)' }}
+        >
+          Get In Touch
+        </h2>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-[var(--geist-foreground)] mb-1">
+            <label htmlFor="name" className="block text-sm font-semibold mb-2 uppercase tracking-wider" style={{ color: 'var(--text-primary)' }}>
               Name
             </label>
             <input
@@ -63,12 +85,26 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-3 py-2 rounded-md bg-[var(--accents-1)] border border-[var(--accents-2)] text-[var(--geist-foreground)] focus:ring-2 focus:ring-[var(--geist-success)] focus:border-transparent outline-none transition-all"
+              className="w-full px-4 py-3 rounded-lg border-2 transition-all focus:outline-none"
+              style={{
+                backgroundColor: 'var(--surface-primary)',
+                borderColor: 'var(--border-primary)',
+                color: 'var(--text-primary)'
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent-primary)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border-primary)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
               placeholder="John Doe"
             />
           </div>
+
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-[var(--geist-foreground)] mb-1">
+            <label htmlFor="email" className="block text-sm font-semibold mb-2 uppercase tracking-wider" style={{ color: 'var(--text-primary)' }}>
               Email
             </label>
             <input
@@ -77,35 +113,60 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-3 py-2 rounded-md bg-[var(--accents-1)] border border-[var(--accents-2)] text-[var(--geist-foreground)] focus:ring-2 focus:ring-[var(--geist-success)] focus:border-transparent outline-none transition-all"
+              className="w-full px-4 py-3 rounded-lg border-2 transition-all focus:outline-none"
+              style={{
+                backgroundColor: 'var(--surface-primary)',
+                borderColor: 'var(--border-primary)',
+                color: 'var(--text-primary)'
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent-primary)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border-primary)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
               placeholder="john@example.com"
             />
           </div>
+
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-[var(--geist-foreground)] mb-1">
+            <label htmlFor="message" className="block text-sm font-semibold mb-2 uppercase tracking-wider" style={{ color: 'var(--text-primary)' }}>
               Message
             </label>
             <textarea
               id="message"
               required
-              rows={4}
+              rows={5}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full px-3 py-2 rounded-md bg-[var(--accents-1)] border border-[var(--accents-2)] text-[var(--geist-foreground)] focus:ring-2 focus:ring-[var(--geist-success)] focus:border-transparent outline-none transition-all resize-none"
+              className="w-full px-4 py-3 rounded-lg border-2 transition-all focus:outline-none resize-none"
+              style={{
+                backgroundColor: 'var(--surface-primary)',
+                borderColor: 'var(--border-primary)',
+                color: 'var(--text-primary)'
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent-primary)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border-primary)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
               placeholder="Your message..."
             />
           </div>
-          <button
+
+          <Button
             type="submit"
-            disabled={status === "submitting" || status === "success"}
-            className={`w-full py-2 px-4 rounded-md font-medium text-white transition-all ${
-              status === "success"
-                ? "bg-[var(--geist-success)] hover:bg-[var(--geist-success)]"
-                : "bg-[var(--geist-foreground)] hover:bg-[var(--accents-7)]"
-            }`}
+            variant="primary"
+            size="lg"
+            style={{ width: '100%' }}
           >
             {status === "submitting" ? "Sending..." : status === "success" ? "Message Sent!" : "Send Message"}
-          </button>
+          </Button>
         </form>
       </div>
     </div>

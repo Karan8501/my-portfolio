@@ -44,47 +44,35 @@ export function SkillsWeb({ skills }: SkillsWebProps) {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  const centerX = 500;
-  const centerY = 350;
+  // Use percentage-based center for proper centering
+  const centerX = 50; // 50% of container width
+  const centerY = 50; // 50% of container height
 
   const defaultChipSize = 75 * 1.15; // 30% bigger default size
 
   const getSkillPosition = (index: number, total: number) => {
-    const ringsConfig = [
-      { count: 1, radius: 0 },
-      { count: 6, radius: 120 },
-      { count: 12, radius: 220 },
-      { count: 12, radius: 320 },
-    ];
+    // Fibonacci Sphere algorithm for even distribution on a sphere
+    const goldenRatio = (1 + Math.sqrt(5)) / 2;
+    const angleIncrement = Math.PI * 2 * goldenRatio;
 
-    let currentIndex = 0;
+    const y = 1 - (index / (total - 1)) * 2; // y goes from 1 to -1
+    const radiusAtY = Math.sqrt(1 - y * y);
 
-    for (const ring of ringsConfig) {
-      if (index < currentIndex + ring.count) {
-        const indexInRing = index - currentIndex;
+    const theta = angleIncrement * index;
+    const x = Math.cos(theta) * radiusAtY;
+    const z = Math.sin(theta) * radiusAtY;
 
-        if (ring.radius === 0) {
-          return { x: centerX, y: centerY };
-        }
+    // Project 3D sphere to 2D with perspective
+    const sphereRadius = 28; // Percentage radius of the sphere
+    const perspective = 0.6; // Perspective factor (0-1, higher = more flat)
 
-        const angleStep = (2 * Math.PI) / ring.count;
-        const angle = indexInRing * angleStep - Math.PI / 2;
+    // Apply perspective projection
+    const scale = 1 / (1 + z * perspective);
 
-        const randomOffset = Math.sin(index * 7) * 15;
-        const radiusWithOffset = ring.radius + randomOffset;
-
-        return {
-          x: centerX + radiusWithOffset * Math.cos(angle),
-          y: centerY + radiusWithOffset * Math.sin(angle),
-        };
-      }
-      currentIndex += ring.count;
-    }
-
-    const angle = (index / total) * 2 * Math.PI;
     return {
-      x: centerX + 280 * Math.cos(angle),
-      y: centerY + 280 * Math.sin(angle),
+      x: centerX + x * sphereRadius * scale,
+      y: centerY + y * sphereRadius * scale,
+      scale: scale, // For sizing based on depth
     };
   };
 
@@ -97,7 +85,7 @@ export function SkillsWeb({ skills }: SkillsWebProps) {
     highlight ? color : 'rgba(255,255,255,0.35)';
 
   return (
-    <div className="relative w-full flex items-center justify-center" style={{ height: '750px' }}>
+    <div className="relative w-full flex items-center justify-center" style={{ height: '600px' }}>
       {/* SVG CONNECTIONS */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none">
         {skills.map((skill, i) => {
@@ -115,10 +103,10 @@ export function SkillsWeb({ skills }: SkillsWebProps) {
             return (
               <line
                 key={`${skill.name}-${connected}`}
-                x1={pos1.x}
-                y1={pos1.y}
-                x2={pos2.x}
-                y2={pos2.y}
+                x1={`${pos1.x}%`}
+                y1={`${pos1.y}%`}
+                x2={`${pos2.x}%`}
+                y2={`${pos2.y}%`}
                 stroke={getConnectionStroke(highlight, categoryColors[skill.category])}
                 strokeWidth={highlight ? 2.5 : 1}
                 opacity={highlight ? 0.85 : 0.35}
@@ -145,15 +133,21 @@ export function SkillsWeb({ skills }: SkillsWebProps) {
         // Center skills horizontally if category is active
         const x =
           activeCategory && isCategoryActive
-            ? centerX + (activeIndex - (categorySkills.length - 1) / 2) * 110
+            ? centerX + (activeIndex - (categorySkills.length - 1) / 2) * 14.5
             : base.x;
 
         const y = activeCategory && isCategoryActive ? centerY : base.y;
+
+        // Use depth-based scale for 3D effect
+        const depthScale = base.scale || 1;
 
         const isHovered = hoveredSkill === skill.name;
         const isConnected = hoveredSkill ? areConnected(skill.name, hoveredSkill) : false;
 
         const shouldHighlight = isHovered || isConnected;
+
+        // Adjust chip size based on depth
+        const chipSize = defaultChipSize * depthScale;
 
         return (
           <div
@@ -162,14 +156,14 @@ export function SkillsWeb({ skills }: SkillsWebProps) {
             onMouseEnter={() => setHoveredSkill(skill.name)}
             onMouseLeave={() => setHoveredSkill(null)}
             style={{
-              left: x,
-              top: y,
-              width: defaultChipSize,
-              height: defaultChipSize,
-              opacity: activeCategory && !isCategoryActive ? 0.4 : 1,
+              left: `${x}%`,
+              top: `${y}%`,
+              width: chipSize,
+              height: chipSize,
+              opacity: activeCategory && !isCategoryActive ? 0.4 : Math.max(0.6, depthScale),
               transform: `translate(-50%, -50%) scale(${shouldHighlight || isCategoryActive ? 1.3 : 1})`,
               transition: 'all 0.35s cubic-bezier(0.34,1.56,0.64,1)',
-              zIndex: shouldHighlight ? 30 : 10,
+              zIndex: shouldHighlight ? 30 : Math.floor(depthScale * 20),
             }}
           >
             <svg viewBox="0 0 100 100" className="w-full h-full">

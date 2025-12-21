@@ -88,9 +88,7 @@ export const portfolioData = {
       stack: ["React", "Next.js", "Tailwind CSS", "CMS"],
       link: "https://www.xpressbees.com",
       images: [
-        "https://placehold.co/800x500/1a1a1a/ffffff?text=XpressBees+Home",
-        "https://placehold.co/800x500/1a1a1a/ffffff?text=Tracking+Dashboard",
-        "https://placehold.co/800x500/1a1a1a/ffffff?text=Mobile+View"
+        "/images/xb/image1.png"
       ]
     },
     {
@@ -99,8 +97,16 @@ export const portfolioData = {
       stack: ["React", "Responsive Design", "CMS", "Node.js"],
       link: "https://www.outmazed.com",
       images: [
-        "https://placehold.co/800x500/1a1a1a/ffffff?text=OutMazed+Hero",
-        "https://placehold.co/800x500/1a1a1a/ffffff?text=Portfolio+Grid"
+        "/images/outmazed/image1.png"
+      ]
+    },
+    {
+      title: "E-Commerce Platform",
+      description: "Full-stack e-commerce platform with real-time inventory management, payment integration, and admin dashboard for product management.",
+      stack: ["Next.js", "Node.js", "MongoDB", "Stripe", "Redis"],
+      link: "https://example-ecommerce.com",
+      images: [
+        "/images/crm/image1.png"
       ]
     },
   ],

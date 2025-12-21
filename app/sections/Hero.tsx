@@ -1,49 +1,151 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { portfolioData } from "../data/portfolio";
-import { GridBackground } from "../components/GridBackground";
-import { BendingString } from "../components/BendingString";
+import { useTheme } from "../providers/ThemeProvider";
 
 interface HeroProps {
   onContactClick: () => void;
 }
 
 export function Hero({ onContactClick }: HeroProps) {
-  const nameChars = portfolioData.personal.name.split("");
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
-    <section className="relative flex flex-col items-center justify-center h-screen px-6 text-center overflow-hidden">
-      <GridBackground />
-      <h1 className="mx-auto max-w-4xl text-5xl font-extrabold tracking-tight text-[var(--geist-foreground)] sm:text-7xl mb-4 pb-2 relative z-10 flex flex-wrap justify-center items-end gap-0 min-h-[180px]">
-        <span className="bg-clip-text text-transparent bg-gradient-to-b from-[var(--geist-foreground)] to-[var(--accents-5)] mb-16 mr-4 self-center">
-          Hi, I'm
-        </span>
-        <div className="flex items-start h-40">
-            {nameChars.map((char, index) => (
-                <BendingString key={index}>
-                    <span className="bg-clip-text text-transparent bg-gradient-to-b from-[var(--geist-foreground)] to-[var(--accents-5)] leading-none text-5xl sm:text-7xl select-none">
-                        {char === " " ? "\u00A0" : char}
-                    </span>
-                </BendingString>
-            ))}
-        </div>
-      </h1>
-      <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--accents-5)] sm:text-xl">
-        {portfolioData.personal.summary}
-      </p>
-      <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-        <Link
-          href="#projects"
-          className="inline-flex h-12 items-center justify-center rounded-md bg-[var(--geist-foreground)] px-8 text-sm font-medium text-[var(--geist-background)] transition-colors hover:bg-[var(--accents-7)] focus:outline-none focus:ring-2 focus:ring-[var(--accents-2)] focus:ring-offset-2"
+    <section
+      style={{
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        padding: 'var(--spacing-3xl)',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Video Background */}
+      <video
+        key={mounted ? theme : 'loading'} // Force re-render when theme changes
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: 0,
+        }}
+      >
+        <source
+          src={mounted && theme === "dark" ? "/videos/hero-background-dark.mp4" : "/videos/hero-background-light.mp4"}
+          type="video/mp4"
+        />
+      </video>
+
+      {/* Dark Overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 1,
+        }}
+      />
+
+      {/* Content - Right Side */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 10,
+          maxWidth: '600px',
+          marginLeft: 'auto',
+          marginRight: '10%',
+          textAlign: 'left',
+        }}
+      >
+        {/* Tagline */}
+        <p
+          style={{
+            fontSize: '0.75rem',
+            fontWeight: '600',
+            color: '#FFFFFF',
+            textTransform: 'uppercase',
+            letterSpacing: '0.3em',
+            marginBottom: 'var(--spacing-2xl)',
+            textShadow: '0 2px 20px rgba(0, 0, 0, 1)',
+          }}
         >
-          View Projects
-        </Link>
+          {portfolioData.personal.title}
+        </p>
+
+        {/* Name */}
+        <h1
+          style={{
+            fontSize: 'clamp(3rem, 8vw, 6rem)',
+            fontWeight: '900',
+            color: '#FFFFFF',
+            lineHeight: '1',
+            marginBottom: 'var(--spacing-md)',
+            letterSpacing: '-0.02em',
+            textShadow: '0 4px 30px rgba(0, 0, 0, 1)',
+          }}
+        >
+          {portfolioData.personal.name}
+        </h1>
+
+        {/* Title/Role */}
+        <p
+          style={{
+            fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+            fontWeight: '700',
+            color: '#FFFFFF',
+            marginBottom: 'var(--spacing-4xl)',
+            textShadow: '0 2px 25px rgba(0, 0, 0, 1)',
+            letterSpacing: '0.02em',
+          }}
+        >
+          Developer
+        </p>
+
+        {/* CTA Button */}
         <button
           onClick={onContactClick}
-          className="inline-flex h-12 items-center justify-center rounded-md border border-[var(--accents-2)] bg-[var(--geist-background)] px-8 text-sm font-medium text-[var(--geist-foreground)] transition-colors hover:bg-[var(--accents-1)] hover:text-[var(--geist-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--accents-2)] focus:ring-offset-2 cursor-pointer"
+          style={{
+            padding: 'var(--spacing-md) var(--spacing-xl)',
+            fontSize: '0.875rem',
+            fontWeight: '600',
+            color: '#FFFFFF',
+            backgroundColor: 'var(--accent-primary)',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--accent-hover)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--accent-primary)';
+          }}
         >
-          Contact Me
+          Portfolio
         </button>
       </div>
+
+
     </section>
   );
 }
