@@ -1,8 +1,8 @@
 "use client";
 
-import { Modal, ModalContent, ModalSection } from "@/components/Modal";
-import { CardLabel, CardTitle, CardText } from "@/components/OutlineCard";
-import { ButtonGroup } from "@/components/ButtonGroup";
+import { Modal, ModalContent, ModalSection } from "@/components/modals/Modal";
+import { CardLabel, CardTitle, CardText } from "@/components/cards/OutlineCard";
+import { ButtonGroup } from "@/components/buttons/ButtonGroup";
 
 interface ExperienceItem {
   role: string;
@@ -27,10 +27,10 @@ export function ExperienceModal({ experience, isOpen, onClose }: ExperienceModal
       <ModalContent direction="vertical">
         <ModalSection width="100%" scrollable>
           <CardLabel>{experience.duration}</CardLabel>
-          <CardTitle style={{ paddingRight: 0, marginBottom: 'var(--spacing-sm)' }}>
+          <CardTitle className="pr-0 mb-spacing-sm">
             {experience.role}
           </CardTitle>
-          <CardText variant="primary" style={{ marginBottom: 'var(--spacing-lg)' }}>
+          <CardText variant="primary" className="mb-spacing-lg">
             {experience.company} • {experience.location}
           </CardText>
 
@@ -38,15 +38,14 @@ export function ExperienceModal({ experience, isOpen, onClose }: ExperienceModal
             {experience.description.map((item, index) => (
               <div 
                 key={index}
-                style={{
-                  display: 'flex',
-                  gap: 'var(--spacing-sm)',
-                  color: 'var(--text-secondary)',
-                  fontSize: '1rem',
-                  lineHeight: '1.6',
-                }}
+                className="flex gap-4 text-text-secondary text-base leading-[1.6]"
               >
-                <span style={{ color: 'var(--accent-primary)', fontWeight: 'bold' }}>•</span>
+                <span 
+                  className="font-mono font-bold text-purple-primary text-sm pt-1 shrink-0 select-none"
+                  style={{ color: 'var(--accent-primary)' }}
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
                 <span>{item}</span>
               </div>
             ))}

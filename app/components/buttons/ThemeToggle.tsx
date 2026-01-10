@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "../providers/ThemeProvider";
+import { useTheme } from "../../providers/ThemeProvider";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
@@ -8,11 +8,10 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-md hover:bg-[var(--accents-2)] text-[var(--geist-foreground)] transition-colors"
+      className="p-2 rounded-md hover:bg-surface-secondary text-text-primary transition-colors"
       aria-label="Toggle Dark Mode"
     >
       {theme === "dark" ? (
-        // Sun Icon (keep existing SVG)
         <svg
           width="20"
           height="20"
@@ -34,7 +33,6 @@ export function ThemeToggle() {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
         </svg>
       ) : (
-          // Moon Icon (keep existing SVG)
         <svg
           width="20"
           height="20"

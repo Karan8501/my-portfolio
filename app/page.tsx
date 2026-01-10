@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/layout/Navbar";
 import { Hero } from "./sections/Hero";
 import { About } from "./sections/About";
 import { Experience } from "./sections/Experience";
 import { Skills } from "./sections/Skills";
 import { Projects } from "./sections/Project";
 import { Contact } from "./sections/Contact";
-import { Footer } from "./components/Footer";
-import { ContactModal } from "./components/ContactModal";
+import { Footer } from "./components/layout/Footer";
+import { ContactModal } from "./components/modals/ContactModal";
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);

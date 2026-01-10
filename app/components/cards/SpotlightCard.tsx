@@ -41,7 +41,7 @@ export function SpotlightCard({ children, className = "", onClick }: { children:
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      className={`relative overflow-hidden rounded-xl border border-[var(--accents-2)] bg-[var(--accents-1)]/50 px-8 py-10 shadow-sm ${className}`}
+      className={`relative overflow-hidden rounded-xl border border-[var(--border-primary)] bg-[var(--surface-primary)] shadow-sm transition-colors duration-300 ${className}`}
     >
       <div
         className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"

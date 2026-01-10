@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, CSSProperties, useState } from "react";
-import { useTheme } from "../providers/ThemeProvider";
+import { useTheme } from "../../providers/ThemeProvider";
 
 interface CardProps {
   children: ReactNode;

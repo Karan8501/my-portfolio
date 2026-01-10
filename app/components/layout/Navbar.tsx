@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "./Button";
-import { useTheme } from "../providers/ThemeProvider";
+import { Button } from "../buttons/Button";
+import { useTheme } from "../../providers/ThemeProvider";
 
 interface NavbarProps {
   onContactClick: () => void;
@@ -87,7 +87,7 @@ export function Navbar({ onContactClick }: NavbarProps) {
             ))}
 
             <Button
-              variant="primary"
+              variant="fill"
               size="sm"
               onClick={onContactClick}
             >
@@ -171,7 +171,7 @@ export function Navbar({ onContactClick }: NavbarProps) {
               </button>
 
               <Button
-                variant="primary"
+                variant="fill"
                 size="sm"
                 onClick={() => {
                   onContactClick();

@@ -1,143 +1,19 @@
 @import "tailwindcss";
+@config "../tailwind.config.ts";
 
 :root {
   --font-sans: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --font-mono: "Geist Mono", Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
   
-  --ds-gray-100-value: 0, 0%, 95%;
-  --ds-gray-200-value: 0, 0%, 92%;
-  --ds-gray-300-value: 0, 0%, 90%;
-  --ds-gray-400-value: 0, 0%, 92%;
-  --ds-gray-500-value: 0, 0%, 79%;
-  --ds-gray-600-value: 0, 0%, 66%;
-  --ds-gray-700-value: 0, 0%, 56%;
-  --ds-gray-800-value: 0, 0%, 49%;
-  --ds-gray-900-value: 0, 0%, 40%;
-  --ds-gray-1000-value: 0, 0%, 9%;
-  
-  --ds-blue-100-value: 212, 100%, 97%;
-  --ds-blue-200-value: 210, 100%, 96%;
-  --ds-blue-300-value: 210, 100%, 94%;
-  --ds-blue-400-value: 209, 100%, 90%;
-  --ds-blue-500-value: 209, 100%, 80%;
-  --ds-blue-600-value: 208, 100%, 66%;
-  --ds-blue-700-value: 212, 100%, 48%;
-  --ds-blue-800-value: 212, 100%, 41%;
-  --ds-blue-900-value: 211, 100%, 42%;
-  --ds-blue-1000-value: 211, 100%, 15%;
-  
-  --ds-red-100-value: 0, 100%, 97%;
-  --ds-red-200-value: 0, 100%, 96%;
-  --ds-red-300-value: 0, 100%, 95%;
-  --ds-red-400-value: 0, 90%, 92%;
-  --ds-red-500-value: 0, 82%, 85%;
-  --ds-red-600-value: 359, 90%, 71%;
-  --ds-red-700-value: 358, 75%, 59%;
-  --ds-red-800-value: 358, 70%, 52%;
-  --ds-red-900-value: 358, 66%, 48%;
-  --ds-red-1000-value: 355, 49%, 15%;
-  
-  --ds-amber-100-value: 39, 100%, 95%;
-  --ds-amber-200-value: 44, 100%, 92%;
-  --ds-amber-300-value: 43, 96%, 90%;
-  --ds-amber-400-value: 42, 100%, 78%;
-  --ds-amber-500-value: 38, 100%, 71%;
-  --ds-amber-600-value: 36, 90%, 62%;
-  --ds-amber-700-value: 39, 100%, 57%;
-  --ds-amber-800-value: 35, 100%, 52%;
-  --ds-amber-900-value: 30, 100%, 32%;
-  --ds-amber-1000-value: 20, 79%, 17%;
-  
-  --ds-green-100-value: 120, 60%, 96%;
-  --ds-green-200-value: 120, 60%, 95%;
-  --ds-green-300-value: 120, 60%, 91%;
-  --ds-green-400-value: 122, 60%, 86%;
-  --ds-green-500-value: 124, 60%, 75%;
-  --ds-green-600-value: 125, 60%, 64%;
-  --ds-green-700-value: 131, 41%, 46%;
-  --ds-green-800-value: 132, 43%, 39%;
-  --ds-green-900-value: 133, 50%, 32%;
-  --ds-green-1000-value: 128, 29%, 15%;
-
-  --ds-gray-100: hsla(var(--ds-gray-100-value), 1);
-  --ds-gray-200: hsla(var(--ds-gray-200-value), 1);
-  --ds-gray-300: hsla(var(--ds-gray-300-value), 1);
-  --ds-gray-400: hsla(var(--ds-gray-400-value), 1);
-  --ds-gray-500: hsla(var(--ds-gray-500-value), 1);
-  --ds-gray-600: hsla(var(--ds-gray-600-value), 1);
-  --ds-gray-700: hsla(var(--ds-gray-700-value), 1);
-  --ds-gray-800: hsla(var(--ds-gray-800-value), 1);
-  --ds-gray-900: hsla(var(--ds-gray-900-value), 1);
-  --ds-gray-1000: hsla(var(--ds-gray-1000-value), 1);
-
-  --ds-blue-100: hsla(var(--ds-blue-100-value), 1);
-  --ds-blue-200: hsla(var(--ds-blue-200-value), 1);
-  --ds-blue-300: hsla(var(--ds-blue-300-value), 1);
-  --ds-blue-400: hsla(var(--ds-blue-400-value), 1);
-  --ds-blue-500: hsla(var(--ds-blue-500-value), 1);
-  --ds-blue-600: hsla(var(--ds-blue-600-value), 1);
-  --ds-blue-700: hsla(var(--ds-blue-700-value), 1);
-  --ds-blue-800: hsla(var(--ds-blue-800-value), 1);
-  --ds-blue-900: hsla(var(--ds-blue-900-value), 1);
-  --ds-blue-1000: hsla(var(--ds-blue-1000-value), 1);
-  
-  --ds-amber-100: hsla(var(--ds-amber-100-value), 1);
-  --ds-amber-200: hsla(var(--ds-amber-200-value), 1);
-  --ds-amber-300: hsla(var(--ds-amber-300-value), 1);
-  --ds-amber-400: hsla(var(--ds-amber-400-value), 1);
-  --ds-amber-500: hsla(var(--ds-amber-500-value), 1);
-  --ds-amber-600: hsla(var(--ds-amber-600-value), 1);
-  --ds-amber-700: hsla(var(--ds-amber-700-value), 1);
-  --ds-amber-800: hsla(var(--ds-amber-800-value), 1);
-  --ds-amber-900: hsla(var(--ds-amber-900-value), 1);
-  --ds-amber-1000: hsla(var(--ds-amber-1000-value), 1);
-  
-  --ds-red-100: hsla(var(--ds-red-100-value), 1);
-  --ds-red-200: hsla(var(--ds-red-200-value), 1);
-  --ds-red-300: hsla(var(--ds-red-300-value), 1);
-  --ds-red-400: hsla(var(--ds-red-400-value), 1);
-  --ds-red-500: hsla(var(--ds-red-500-value), 1);
-  --ds-red-600: hsla(var(--ds-red-600-value), 1);
-  --ds-red-700: hsla(var(--ds-red-700-value), 1);
-  --ds-red-800: hsla(var(--ds-red-800-value), 1);
-  --ds-red-900: hsla(var(--ds-red-900-value), 1);
-  --ds-red-1000: hsla(var(--ds-red-1000-value), 1);
-  
-  --ds-green-100: hsla(var(--ds-green-100-value), 1);
-  --ds-green-200: hsla(var(--ds-green-200-value), 1);
-  --ds-green-300: hsla(var(--ds-green-300-value), 1);
-  --ds-green-400: hsla(var(--ds-green-400-value), 1);
-  --ds-green-500: hsla(var(--ds-green-500-value), 1);
-  --ds-green-600: hsla(var(--ds-green-600-value), 1);
-  --ds-green-700: hsla(var(--ds-green-700-value), 1);
-  --ds-green-800: hsla(var(--ds-green-800-value), 1);
-  --ds-green-900: hsla(var(--ds-green-900-value), 1);
-  --ds-green-1000: hsla(var(--ds-green-1000-value), 1);
-
+  /* Simplified Global Variables */
+    --font-sans: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-mono: "Geist Mono", Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    /* Geist Theme Variables (Legacy Support) */
   --geist-foreground: #000;
   --geist-background: #fff;
-  --geist-selection: var(--ds-gray-1000);
-  --geist-selection-text-color: var(--ds-gray-100);
-  --accents-1: #fafafa;
-  --accents-2: #eaeaea;
-  --accents-3: #999;
-  --accents-4: #888;
-  --accents-5: #666;
-  --accents-6: #444;
-  --accents-7: #333;
-  --accents-8: #111;
-  --geist-link-color: var(--ds-blue-700);
-  --geist-marketing-gray: #fafbfc;
-  --geist-code: var(--geist-foreground);
-  --geist-error: #e00;
-  --geist-success: #0070f3;
-  --geist-warning: #f5a623;
-  --geist-violet: #7928ca;
-  --geist-cyan: #50e3c2;
+  --geist-selection: #333;
+    --geist-selection-text-color: #fff;
   
-  --geist-space-gap: 24px;
-  --geist-page-margin: var(--geist-space-gap);
-  --geist-page-width: 1200px;
   --header-height: 64px;
   
   /* ============================================
@@ -161,9 +37,9 @@
     --spacing-3xl: 4rem;
   
     /* Modern Color Palette - Light Mode */
-    --color-primary: #3B82F6;
-    --color-primary-hover: #2563EB;
-    --color-primary-light: #DBEAFE;
+    --color-primary: #7928ca;
+      --color-primary-hover: #5b21b6;
+      --color-primary-light: #F3E8FF;
   
     --color-secondary: #8B5CF6;
     --color-secondary-hover: #7C3AED;
@@ -180,19 +56,26 @@
   
     /* Surface Colors - Light Mode */
     --surface-primary: #FFFFFF;
-    --surface-secondary: #F3F4F6;
+    --background: #F3F4F6;
+      --surface-secondary: #F9FAFB;
+      /* Zinc-50 */
     --surface-elevated: #FFFFFF;
     --surface-overlay: rgba(0, 0, 0, 0.5);
   
     /* Border Colors - Light Mode */
     --border-primary: #E5E7EB;
-    --border-secondary: #F3F4F6;
-    --border-focus: #3B82F6;
+      /* Gray-200 */
+      --border-secondary: #F3F4F6;
+      /* Gray-100 */
+        --border-focus: #8B5CF6;
   
     /* Text Colors - Light Mode */
-    --text-primary: #111827;
-    --text-secondary: #6B7280;
-    --text-tertiary: #9CA3AF;
+    --text-primary: #1F2937;
+      /* Gray-900 */
+      --text-secondary: #4B5563;
+      /* Gray-600 */
+      --text-tertiary: #6B7280;
+      /* Gray-500 */
     --text-inverse: #FFFFFF;
   
     /* Shadow System - Light Mode */
@@ -239,82 +122,20 @@
     --accent-hover: #7C3AED;
     --chip-bg: rgb(10, 10, 10);
     --card-hover-outline: #8B5CF6;
-  --ds-gray-100-value: 0, 0%, 10%;
-  --ds-gray-200-value: 0, 0%, 12%;
-  --ds-gray-300-value: 0, 0%, 16%;
-  --ds-gray-400-value: 0, 0%, 18%;
-  --ds-gray-500-value: 0, 0%, 27%;
-  --ds-gray-600-value: 0, 0%, 53%;
-  --ds-gray-700-value: 0, 0%, 56%;
-  --ds-gray-800-value: 0, 0%, 49%;
-  --ds-gray-900-value: 0, 0%, 63%;
-  --ds-gray-1000-value: 0, 0%, 93%;
-  
-  --ds-blue-100-value: 216, 50%, 12%;
-  --ds-blue-200-value: 214, 59%, 15%;
-  --ds-blue-300-value: 213, 71%, 20%;
-  --ds-blue-400-value: 212, 78%, 23%;
-  --ds-blue-500-value: 211, 86%, 27%;
-  --ds-blue-600-value: 206, 100%, 50%;
-  --ds-blue-700-value: 212, 100%, 48%;
-  --ds-blue-800-value: 212, 100%, 41%;
-  --ds-blue-900-value: 210, 100%, 66%;
-  --ds-blue-1000-value: 206, 100%, 96%;
-  
-  --ds-red-100-value: 357, 37%, 12%;
-  --ds-red-200-value: 357, 46%, 16%;
-  --ds-red-300-value: 356, 54%, 22%;
-  --ds-red-400-value: 357, 55%, 26%;
-  --ds-red-500-value: 357, 60%, 32%;
-  --ds-red-600-value: 358, 75%, 59%;
-  --ds-red-700-value: 358, 75%, 59%;
-  --ds-red-800-value: 358, 69%, 52%;
-  --ds-red-900-value: 358, 100%, 69%;
-  --ds-red-1000-value: 353, 90%, 96%;
-  
-  --ds-amber-100-value: 35, 100%, 8%;
-  --ds-amber-200-value: 32, 100%, 10%;
-  --ds-amber-300-value: 33, 100%, 15%;
-  --ds-amber-400-value: 35, 100%, 17%;
-  --ds-amber-500-value: 35, 91%, 22%;
-  --ds-amber-600-value: 39, 85%, 49%;
-  --ds-amber-700-value: 39, 100%, 57%;
-  --ds-amber-800-value: 35, 100%, 52%;
-  --ds-amber-900-value: 39, 90%, 50%;
-  --ds-amber-1000-value: 40, 94%, 93%;
-  
-  --ds-green-100-value: 136, 50%, 9%;
-  --ds-green-200-value: 137, 50%, 12%;
-  --ds-green-300-value: 136, 50%, 14%;
-  --ds-green-400-value: 135, 70%, 16%;
-  --ds-green-500-value: 135, 70%, 23%;
-  --ds-green-600-value: 135, 70%, 34%;
-  --ds-green-700-value: 131, 41%, 46%;
-  --ds-green-800-value: 132, 43%, 39%;
-  --ds-green-900-value: 131, 43%, 57%;
-  --ds-green-1000-value: 136, 73%, 94%;
 
-  --geist-foreground: #fff;
-  --geist-background: #000;
-  --accents-8: #fafafa;
-  --accents-7: #eaeaea;
-  --accents-6: #999;
-  --accents-5: #888;
-  --accents-4: #666;
-  --accents-3: #444;
-  --accents-2: #333;
-  --accents-1: #111;
-  --geist-selection: var(--ds-gray-1000);
-  --geist-selection-text-color: var(--ds-gray-100);
-  --geist-link-color: var(--ds-blue-900);
+    --geist-foreground: #fff;
+      --geist-background: #000;
+    --geist-selection: #fff;
+      --geist-selection-text-color: #000;
+      --geist-link-color: #3b82f6;
   --geist-error-light: #f33;
   --geist-error: red;
   --geist-error-dark: #e60000;
   --spotlight-color: rgba(255, 255, 255, 0.1);
-  /* Modern Color Palette - Dark Mode */
-    --color-primary: #60A5FA;
-    --color-primary-hover: #3B82F6;
-    --color-primary-light: #1E3A8A;
+    /* Modern Color Palette - Dark Mode */
+    --color-primary: #7928ca;
+      --color-primary-hover: #9F7AEA;
+      --color-primary-light: #2D1B69;
   
     --color-secondary: #A78BFA;
     --color-secondary-hover: #8B5CF6;
@@ -355,29 +176,7 @@
     --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
   }
   
-  /* Light Mode */
-  .light,
-  html.light {
-    --background: #F3F4F6;
-    --geist-background: #F3F4F6;
-    --geist-foreground: #000000;
-  
-    --surface-primary: #FFFFFF;
-    --surface-secondary: #F3F4F6;
-    --surface-elevated: #FFFFFF;
-  
-    --color-primary: #8B5CF6;
-    --color-primary-hover: #7C3AED;
-  
-    --text-primary: #111827;
-    --text-secondary: #6B7280;
-    --text-tertiary: #9CA3AF;
-  
-    --border-primary: #E5E7EB;
-    --border-secondary: #F3F4F6;
-  
-    --spotlight-color: rgba(139, 92, 246, 0.06);
-}
+
 
 html, body {
   font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);

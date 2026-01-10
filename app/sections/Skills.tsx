@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { portfolioData } from "@/data/portfolio";
-import { Button } from "@/components/Button";
-import { ButtonGroup } from "@/components/ButtonGroup";
-import { SectionHeader } from "@/components/SectionHeader";
-import { HexagonChip } from "@/components/HexagonChip";
-import { TruncatedText } from "@/components/TruncatedText";
-import { Section } from "@/components/Section";
+import { Button } from "@/components/buttons/Button";
+import { ButtonGroup } from "@/components/buttons/ButtonGroup";
+import { SectionHeader } from "@/components/layout/SectionHeader";
+import { HexagonChip } from "@/components/chips/HexagonChip";
+import { TruncatedText } from "@/components/ui/TruncatedText";
+import { Section } from "@/components/layout/Section";
 
 export function Skills() {
   const [selectedCategory, setSelectedCategory] = useState(0);
@@ -19,11 +19,12 @@ export function Skills() {
         count={portfolioData.skills[selectedCategory].skills.length}
         countLabel="Skills"
       />
-      <ButtonGroup
+      <div className="flex flex-col gap-20">
+        <ButtonGroup
         direction="horizontal"
         align="center"
         gap="md"
-        style={{ marginBottom: 'var(--spacing-xl)', flexWrap: 'wrap' }}
+          className="mb-spacing-3xl flex-wrap"
       >
         {portfolioData.skills.map((category, index) => (
           <Button
@@ -41,7 +42,7 @@ export function Skills() {
         direction="horizontal"
         align="center"
         gap="lg"
-        style={{ padding: 'var(--spacing-2xl) 0' }}
+          className="py-spacing-2xl"
       >
         {portfolioData.skills[selectedCategory].skills.map((skill, index) => (
           <HexagonChip key={index}>
@@ -49,6 +50,7 @@ export function Skills() {
           </HexagonChip>
         ))}
       </ButtonGroup>
+      </div>
     </Section>
   );
 }

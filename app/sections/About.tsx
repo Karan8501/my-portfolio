@@ -2,14 +2,10 @@
 
 import { portfolioData } from "@/data/portfolio";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Section } from "@/components/Section";
-import { useTheme } from "@/providers/ThemeProvider";
+import { Section } from "@/components/layout/Section";
 
 export function About() {
   const { ref, isVisible } = useScrollAnimation();
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-
   return (
     <Section>
       <div

@@ -1,11 +1,11 @@
 "use client";
 
 import { ProjectItem } from "@/data/portfolio";
-import { Modal, ModalContent, ModalImage, ModalSection } from "@/components/Modal";
-import { CardLabel, CardTitle, CardText } from "@/components/OutlineCard";
-import { Chip } from "@/components/Chip";
-import { ButtonGroup } from "@/components/ButtonGroup";
-import { Button } from "@/components/Button";
+import { Modal, ModalContent, ModalImage, ModalSection } from "./Modal";
+import { CardTitle, CardText } from "../cards/OutlineCard";
+import { Chip } from "../chips/Chip";
+import { ButtonGroup } from "../buttons/ButtonGroup";
+import { Button } from "../buttons/Button";
 
 interface ProjectModalProps {
   project: ProjectItem | null;
@@ -53,7 +53,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           {project.link && (
             <Button
               onClick={() => window.open(project.link, '_blank')}
-              variant="primary"
+              variant="fill"
               size="md"
             >
               Visit Live Site

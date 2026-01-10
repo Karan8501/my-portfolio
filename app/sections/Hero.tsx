@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { portfolioData } from "../data/portfolio";
+import { Button } from "../components/buttons/Button";
 import { useTheme } from "../providers/ThemeProvider";
 
 interface HeroProps {
@@ -19,16 +20,7 @@ export function Hero({ onContactClick }: HeroProps) {
 
   return (
     <section
-      style={{
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        padding: 'var(--spacing-3xl)',
-        overflow: 'hidden',
-      }}
+      className="relative flex flex-col items-start justify-center min-h-screen p-spacing-3xl overflow-hidden"
     >
       {/* Video Background */}
       <video
@@ -37,15 +29,7 @@ export function Hero({ onContactClick }: HeroProps) {
         loop
         muted
         playsInline
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          zIndex: 0,
-        }}
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
         <source
           src={mounted && theme === "dark" ? "/videos/hero-background-dark.mp4" : "/videos/hero-background-light.mp4"}
@@ -53,96 +37,36 @@ export function Hero({ onContactClick }: HeroProps) {
         />
       </video>
 
-      {/* Dark Overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 1,
-        }}
-      />
 
-      {/* Content - Right Side */}
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 10,
-          maxWidth: '600px',
-          marginLeft: 'auto',
-          marginRight: '10%',
-          textAlign: 'left',
-        }}
-      >
+      <div className="absolute inset-0 bg-black/50 z-[1]" />
+
+      {/* Content - Right Side */}  
+      <div className="relative z-10 max-w-[600px] ml-auto mr-[10%] text-left">
         {/* Tagline */}
-        <p
-          style={{
-            fontSize: '0.75rem',
-            fontWeight: '600',
-            color: '#FFFFFF',
-            textTransform: 'uppercase',
-            letterSpacing: '0.3em',
-            marginBottom: 'var(--spacing-2xl)',
-            textShadow: '0 2px 20px rgba(0, 0, 0, 1)',
-          }}
-        >
+        <p className="text-xs font-semibold text-white uppercase tracking-[0.3em] mb-spacing-2xl drop-shadow-[0_2px_20px_rgba(0,0,0,1)]">
           {portfolioData.personal.title}
         </p>
 
         {/* Name */}
-        <h1
-          style={{
-            fontSize: 'clamp(3rem, 8vw, 6rem)',
-            fontWeight: '900',
-            color: '#FFFFFF',
-            lineHeight: '1',
-            marginBottom: 'var(--spacing-md)',
-            letterSpacing: '-0.02em',
-            textShadow: '0 4px 30px rgba(0, 0, 0, 1)',
-          }}
-        >
+        <h1 className="text-[clamp(3rem,8vw,6rem)] font-black text-white leading-none mb-spacing-md -tracking-[0.02em] drop-shadow-[0_4px_30px_rgba(0,0,0,1)]">
           {portfolioData.personal.name}
         </h1>
 
         {/* Title/Role */}
-        <p
-          style={{
-            fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-            fontWeight: '700',
-            color: '#FFFFFF',
-            marginBottom: 'var(--spacing-4xl)',
-            textShadow: '0 2px 25px rgba(0, 0, 0, 1)',
-            letterSpacing: '0.02em',
-          }}
-        >
+        <p className="text-[clamp(1.5rem,4vw,2.5rem)] font-bold text-white mb-spacing-4xl drop-shadow-[0_2px_25px_rgba(0,0,0,1)] tracking-wide">
           Developer
         </p>
 
         {/* CTA Button */}
-        <button
-          onClick={onContactClick}
-          style={{
-            padding: 'var(--spacing-md) var(--spacing-xl)',
-            fontSize: '0.875rem',
-            fontWeight: '600',
-            color: '#FFFFFF',
-            backgroundColor: 'var(--accent-primary)',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'var(--accent-hover)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'var(--accent-primary)';
-          }}
-        >
-          Portfolio
-        </button>
+        <div className="mt-spacing-4xl">
+          <Button
+            onClick={onContactClick}
+            variant="fill"
+            size="lg"
+          >
+            Portfolio
+          </Button>
+        </div>
       </div>
 
 

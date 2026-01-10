@@ -2,7 +2,7 @@
 
 import { ReactNode, CSSProperties } from "react";
 import { Card } from "./Card";
-import { useTheme } from "../providers/ThemeProvider";
+import { useTheme } from "../../providers/ThemeProvider";
 
 interface OutlineCardProps {
   children: ReactNode;
@@ -56,22 +56,17 @@ export function OutlineCard({
   );
 }
 
-interface CardLabelProps {
-  children: ReactNode;
-  style?: CSSProperties;
-}
-
-export function CardLabel({ children, style = {} }: CardLabelProps) {
+export function CardLabel({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <div
+    <div 
+      className={className}
       style={{
         fontSize: '0.75rem',
-        color: 'var(--accent-primary)',
         fontWeight: '600',
         textTransform: 'uppercase',
-        letterSpacing: '0.2em',
-        marginBottom: 'var(--spacing-md)',
-        ...style,
+        letterSpacing: '0.1em',
+        color: 'var(--accent-primary)',
+        marginBottom: 'var(--spacing-sm)',
       }}
     >
       {children}
@@ -79,24 +74,19 @@ export function CardLabel({ children, style = {} }: CardLabelProps) {
   );
 }
 
-interface CardTitleProps {
-  children: ReactNode;
-  style?: CSSProperties;
-}
-
-export function CardTitle({ children, style = {} }: CardTitleProps) {
+export function CardTitle({ children, style = {}, className = "" }: { children: ReactNode; style?: React.CSSProperties; className?: string }) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   
   return (
-    <h3
+    <h3 
+      className={className}
       style={{
-        fontSize: 'clamp(1.125rem, 1.8vw, 1.25rem)',
+        fontSize: '1.5rem',
         fontWeight: '700',
         color: 'var(--text-primary)',
-        marginBottom: 'var(--spacing-sm)',
-        lineHeight: '1.3',
-        paddingRight: 'var(--spacing-3xl)',
+        marginBottom: 'var(--spacing-md)',
+        lineHeight: 1.2,
         ...style,
       }}
     >
@@ -105,31 +95,36 @@ export function CardTitle({ children, style = {} }: CardTitleProps) {
   );
 }
 
-interface CardTextProps {
-  children: ReactNode;
-  variant?: 'primary' | 'secondary';
-  style?: CSSProperties;
-}
-
-export function CardText({ children, variant = 'primary', style = {} }: CardTextProps) {
+export function CardText({ 
+  children, 
+  variant = "primary",
+  style = {},
+  className = "" 
+}: { 
+  children: ReactNode; 
+  variant?: "primary" | "secondary";
+  style?: React.CSSProperties;
+  className?: string;
+}) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   
-  const colorMap = {
-    primary: 'var(--text-secondary)',
-    secondary: 'var(--text-tertiary)',
+  const colors = {
+    primary: 'var(--text-primary)',
+    secondary: 'var(--text-secondary)',
   };
 
   return (
-    <div
+    <p 
+      className={className}
       style={{
-        fontSize: variant === 'primary' ? '1rem' : '0.875rem',
-        color: colorMap[variant],
-        marginBottom: 'var(--spacing-xs)',
+        fontSize: variant === "primary" ? '1rem' : '0.875rem',
+        color: colors[variant],
+        lineHeight: 1.5,
         ...style,
       }}
     >
       {children}
-    </div>
+    </p>
   );
 }

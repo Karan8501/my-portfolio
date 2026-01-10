@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, CSSProperties } from "react";
-import { useTheme } from "../providers/ThemeProvider";
+import { useTheme } from "../../providers/ThemeProvider";
 
 interface HeroCardProps {
   children: ReactNode;
@@ -23,27 +23,25 @@ export function HeroCard({
   
   return (
     <div
+      className="group relative transition-all duration-500 ease-out hover:z-10 hover:scale-105"
       onClick={onClick}
       style={{
-        position: 'relative',
         cursor: onClick ? 'pointer' : 'default',
         borderRadius: '8px',
         overflow: 'hidden',
         backgroundColor: isDark ? '#0a0a0a' : '#FFFFFF',
-        border: `2px solid ${isDark ? 'transparent' : '#E5E7EB'}`,
-        transition: 'all 0.3s ease',
+        border: 'none',
+        boxShadow: 'var(--shadow-lg)',
         ...style,
       }}
       onMouseEnter={(e) => {
         if (onClick) {
-          e.currentTarget.style.transform = 'translateY(-8px)';
-          e.currentTarget.style.borderColor = 'var(--accent-primary)';
+          // Hover logic is now handled by Tailwind classes
         }
       }}
       onMouseLeave={(e) => {
         if (onClick) {
-          e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.borderColor = isDark ? 'transparent' : '#E5E7EB';
+           // Hover logic is now handled by Tailwind classes
         }
       }}
     >
@@ -52,15 +50,18 @@ export function HeroCard({
         <div
           style={{
             position: 'relative',
-            width: '100%',
+            width: 'auto',
             height: imageHeight,
             backgroundColor: isDark ? '#1a1a1a' : '#F3F4F6',
             overflow: 'hidden',
+            margin: '20px 20px 0 20px',
+            borderRadius: '8px',
           }}
         >
           <img
             src={imageUrl}
             alt="Card image"
+            className="transition-transform duration-700 ease-out group-hover:scale-110"
             style={{
               width: '100%',
               height: '100%',

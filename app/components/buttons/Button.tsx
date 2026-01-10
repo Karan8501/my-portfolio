@@ -5,7 +5,7 @@ import { ReactNode, CSSProperties } from "react";
 interface ButtonProps {
   children: ReactNode;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'outline' | 'fill';
   size?: 'sm' | 'md' | 'lg';
   type?: 'button' | 'submit' | 'reset';
   style?: CSSProperties;
@@ -52,6 +52,17 @@ export function Button({
       color: '#FFFFFF',
       border: 'none',
     },
+    fill: {
+      fontWeight: '600',
+      color: '#FFFFFF',
+      backgroundColor: 'var(--accent-primary)',
+      border: 'none',
+      borderRadius: '4px',
+      cursor: 'pointer',
+      transition: 'all 0.3s ease',
+      textTransform: 'uppercase',
+      letterSpacing: '0.1em',
+    },
     secondary: {
       backgroundColor: 'transparent',
       color: 'var(--text-secondary)',
@@ -65,8 +76,9 @@ export function Button({
   };
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (variant === 'primary') {
+    if (variant === 'primary' || variant === 'fill') {
       e.currentTarget.style.borderColor = 'var(--accent-hover)';
+      e.currentTarget.style.backgroundColor = 'var(--accent-hover)';
     } else if (variant === 'secondary') {
       e.currentTarget.style.borderColor = 'var(--accent-primary)';
       e.currentTarget.style.backgroundColor = 'var(--accent-primary)';
@@ -78,7 +90,7 @@ export function Button({
   };
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (variant === 'primary') {
+    if (variant === 'primary' || variant === 'fill') {
       e.currentTarget.style.backgroundColor = 'var(--accent-primary)';
     } else if (variant === 'secondary') {
       e.currentTarget.style.borderColor = 'var(--accent-primary)';

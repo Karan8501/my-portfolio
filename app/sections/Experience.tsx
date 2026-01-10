@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { portfolioData } from "@/data/portfolio";
-import { ExperienceModal } from "@/components/ExperienceModal";
-import { SectionHeader } from "@/components/SectionHeader";
-import { OutlineCard, CardLabel, CardTitle, CardText } from "@/components/OutlineCard";
-import { Section } from "@/components/Section";
+import { ExperienceModal } from "@/components/modals/ExperienceModal";
+import { SectionHeader } from "@/components/layout/SectionHeader";
+import { OutlineCard, CardLabel, CardTitle, CardText } from "@/components/cards/OutlineCard";
+import { Section } from "@/components/layout/Section";
 
 interface ExperienceItem {
   role: string;
@@ -34,13 +34,7 @@ export function Experience() {
         countLabel="Degrees"
       />
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))',
-          gap: 'var(--spacing-xl)',
-        }}
-      >
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,350px),1fr))] gap-xl">
         {portfolioData.experience.map((exp, index) => (
           <div
             key={index}

@@ -5,25 +5,36 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   darkMode: ['selector', '[class~="dark"]'],
   theme: {
     extend: {
       colors: {
         purple: {
-          primary: '#8B5CF6',
-          dark: '#7C3AED',
+          primary: 'var(--color-primary)',
+          hover: 'var(--color-primary-hover)',
+          light: 'var(--color-primary-light)',
         },
         dark: {
-          bg: '#000000',
-          surface: '#0a0a0a',
-          elevated: '#1a1a1a',
-          border: '#333333',
+          bg: 'var(--background)',
+          surface: 'var(--surface-primary)',
+          elevated: 'var(--surface-elevated)',
+          border: 'var(--border-primary)',
         },
         text: {
-          primary: '#FFFFFF',
-          secondary: '#A0A0A0',
-          tertiary: '#6B7280',
+          primary: 'var(--text-primary)',
+          secondary: 'var(--text-secondary)',
+          tertiary: 'var(--text-tertiary)',
+        },
+        surface: {
+          primary: 'var(--surface-primary)',
+          secondary: 'var(--surface-secondary)',
+          elevated: 'var(--surface-elevated)',
+        },
+        border: {
+          primary: 'var(--border-primary)',
+          secondary: 'var(--border-secondary)',
         },
       },
       spacing: {
